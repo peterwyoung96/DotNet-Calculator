@@ -11,6 +11,10 @@ public partial class Form1 : Form
     {
         InitializeComponent();
 
+        this.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.MaximizeBox = false;
+
         Text = "DotNET Calculator";
         Width = 300;
         Height = 450;
@@ -20,6 +24,12 @@ public partial class Form1 : Form
         display.Top = 20;
         display.Left = 10;
         display.Font = new System.Drawing.Font("Arial", 20);
+        display.TextAlign = HorizontalAlignment.Right;
+
+        display.BackColor = System.Drawing.Color.Black;
+        display.ForeColor = System.Drawing.Color.Lime;
+
+        display.BorderStyle = BorderStyle.FixedSingle;
         Controls.Add(display);
 
         string[] buttons =
@@ -40,6 +50,28 @@ public partial class Form1 : Form
             b.Left = x;
             b.Top = y;
 
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+
+            b.BackColor = System.Drawing.Color.FromArgb(60,60,60);
+            b.ForeColor = System.Drawing.Color.White;
+
+            b.Cursor = Cursors.Hand;
+
+            if(text == "+" ||
+            text == "-" ||
+            text == "*" ||
+            text == "/")
+            {
+                b.BackColor = System.Drawing.Color.Orange;
+                b.ForeColor = Color.Black;
+            }
+
+            if(text == "=")
+            {
+                b.BackColor = Color.Green;
+            }
+
             b.Font = new System.Drawing.Font("Arial", 16);
             b.Click += ButtonClick;
             Controls.Add(b);
@@ -58,6 +90,15 @@ public partial class Form1 : Form
         clearButton.Height = 55;
         clearButton.Left = 10;
         clearButton.Top = y;
+
+        clearButton.BackColor =
+            System.Drawing.Color.Firebrick;
+
+        clearButton.ForeColor =
+            System.Drawing.Color.White;
+
+        clearButton.FlatStyle = FlatStyle.Flat;
+        clearButton.FlatAppearance.BorderSize = 0;
 
         clearButton.Font = new System.Drawing.Font("Arial", 16);
         clearButton.Click += ClearButtonClick;
